@@ -48,6 +48,8 @@ current_player = player_one
 game = true
 
 while game
+  puts ''
+  display_board
   if current_player == player_one
     puts "#{player_one}, please enter your move."
     input = gets.chomp.to_i # Current player's input.

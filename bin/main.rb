@@ -1,41 +1,72 @@
 #!/usr/bin/env ruby
 
-puts "Welcome to Tic-Tac_Toe!\n\n"
-puts "Please enter your name, Player1?\n"
-player_1 = gets.chomp
-puts "Please select X or O\n"
-select_1 = gets.chomp
-if select_1 == "X"
-  select_2 = "O"
-elsif select_1 == "O"
-  select_2 = "X"
-else 
-  puts "Please enter X or O"
-end
-puts "#{player_1} has selected #{select_1}"
-puts "Please enter your name, Player2?\n"
-player_2 = gets.chomp
-puts "#{player_2} is #{select_2}"
+# Welcome Message and player name input.
+puts ".....Welcome to Tic-Tac_Toe!.....\n\n"
+puts 'Please enter your name Player_one:'
+player_one = gets.chomp.capitalize
+puts "\n"
+puts 'Please enter your name Player_two:'
+player_two = gets.chomp.capitalize
+puts "\n"
 
+# Player input symbol selection.
+select_one = ''
+until select_one.upcase == 'X' || select_one == 'O'
+  puts "#{player_one}, Please select 'X' or 'O'"
+  select_one = gets.chomp.upcase
+end
+
+select_two = select_one == 'X' ? 'O' : 'X'
+
+puts "#{player_one} has selected #{select_one}."
+puts "Therefore #{player_two} will use #{select_two}."
 
 def display_board
-  board = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2], [2,0], [2,1], [2,2]]
+  puts '1 | 2 | 3'
+  puts '4 | 5 | 6'
+  puts '7 | 8 | 9'
+  puts ''
 end
 
-current_player = player_1
-
-def player_move
-  puts "#{current_player} Please choose your move."
-  move = gets.chomp.to_i
-
-end
-
-def update_board
-
+def update_board(_move)
+  puts 'Register move in board.'
+  puts 'Update Board.'
+  puts 'Display updated board.'
 end
 
 def find_winner
-
+  puts 'check win condition.'
+  puts 'check draw condition'
+  puts 'If win condition or draw, end game else continue game.'
 end
 
-display_board
+def valid_move?(move)
+  (1..9).include?(move)
+end
+
+current_player = player_one
+game = true
+
+while game
+  if current_player == player_one
+    puts "#{player_one}, please enter your move."
+    input = gets.chomp.to_i # Current player's input.
+    until valid_move?(input)
+      puts 'Invalid move, please choose another move.'
+      input = gets.chomp.to_i
+    end
+    current_player = player_two
+  else
+    puts "#{player_two}, please enter your move."
+    input = gets.chomp.to_i # Current player's input.
+    until valid_move?(input)
+      puts 'Invalid move, please choose another move.'
+      input = gets.chomp.to_i
+    end
+    current_player = player_one
+  end
+  update_board(input)
+  game = false if find_winner
+end
+
+puts '.....GAME OVER.....'

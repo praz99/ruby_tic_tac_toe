@@ -1,13 +1,33 @@
 #!/usr/bin/env ruby
+require_relative '../lib/name_check.rb'
 
 # Welcome Message and player name input.
 puts ".....Welcome to Tic-Tac_Toe!.....\n\n"
 puts 'Please enter your name Player_one:'
 player_one = gets.chomp.capitalize
 puts "\n"
+
+valid_name = NameCheck.new
+until valid_name.name_given?(player_one)
+  puts 'Name cannot be empty. Please input a name.'
+  player_one = gets.chomp.capitalize
+end
+
 puts 'Please enter your name Player_two:'
 player_two = gets.chomp.capitalize
 puts "\n"
+check = true
+while check
+  if !valid_name.name_given?(player_two)
+    puts 'Name cannot be empty. Please input a name.'
+    player_two = gets.chomp.capitalize
+  elsif valid_name.name_repeated?(player_one, player_two)
+    puts 'The name has been repeated, please select a different name player_two.'
+    player_two = gets.chomp.capitalize
+  else
+    check = false
+  end
+end
 
 # Player input symbol selection.
 select_one = ''

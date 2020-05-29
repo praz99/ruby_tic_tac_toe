@@ -1,4 +1,4 @@
-#update board
+# update board
 class Board
   def self.win?(arr, player)
     return true if [
@@ -19,7 +19,7 @@ class Board
 
   def self.draw?(arr)
     return false if arr.include?(' ')
+
     true
   end
 end
-#win conditions

@@ -8,10 +8,6 @@ class Game
     @board = arr
   end
 
-  def self.valid_letter?(letter)
-    return true if %w[X O].include?(letter)
-  end
-
   def current_player(num)
     if num.even?
       @name_current_player = @player1_name

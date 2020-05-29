@@ -76,7 +76,7 @@ while play
 
   while game_is_on
     game.current_player(i)
-    puts "\n#{game.name_current_player} please make a move from 1 to 9 "
+    puts "\n#{game.name_current_player}(#{game.current_player_letter}) please make a move from 1 to 9 "
     move = gets.chomp
     until game.valid_move?(move)
       puts "\nError, input invalid. #{game.name_current_player} Please try again"

@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../lib/name_check.rb'
+require_relative '../lib/board.rb'
 
 # Welcome Message and player name input.
 puts ".....Welcome to Tic-Tac_Toe!.....\n\n"
@@ -32,7 +33,7 @@ end
 # Player input symbol selection.
 select_one = ''
 until select_one.upcase == 'X' || select_one == 'O'
-  puts "#{player_one}, Please select 'X' or 'O'"
+  puts "#{player_one}, please select 'X' or 'O'"
   select_one = gets.chomp.upcase
 end
 
@@ -40,19 +41,11 @@ select_two = select_one == 'X' ? 'O' : 'X'
 
 puts "#{player_one} has selected #{select_one}."
 puts "Therefore #{player_two} will use #{select_two}."
+puts ''
+puts 'The board is displayed'
 
-def display_board
-  puts '1 | 2 | 3'
-  puts '4 | 5 | 6'
-  puts '7 | 8 | 9'
-  puts ''
-end
-
-def update_board(_move)
-  puts 'Register move in board.'
-  puts 'Update Board.'
-  puts 'Display updated board.'
-end
+board = Board.new
+puts board.display_board
 
 def find_winner
   puts 'check win condition.'
@@ -69,7 +62,6 @@ game = true
 
 while game
   puts ''
-  display_board
   if current_player == player_one
     puts "#{player_one}, please enter your move."
     input = gets.chomp.to_i # Current player's input.
@@ -77,7 +69,12 @@ while game
       puts 'Invalid move, please choose another move.'
       input = gets.chomp.to_i
     end
-    current_player = player_two
+    if board.update_board(input, select_one)
+      puts board.display_board
+      current_player = player_two
+    else
+      puts "Error"
+    end
   else
     puts "#{player_two}, please enter your move."
     input = gets.chomp.to_i # Current player's input.
@@ -85,10 +82,11 @@ while game
       puts 'Invalid move, please choose another move.'
       input = gets.chomp.to_i
     end
+    board.update_board(input, select_two)
+    puts board.display_board
     current_player = player_one
   end
-  update_board(input)
-  game = false if find_winner
+  # game = false if find_winner
 end
 
 puts '.....GAME OVER.....'

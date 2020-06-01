@@ -1,5 +1,10 @@
 # ruby_tic_tac_toe
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
 This game is a virtual representation of the classic Tic-Tac-Toe game.
 
 ![Tic tac toe game](https://lemmoscripts.com/wp/wp-content/uploads/2018/09/tic-tac-toe-capture-2.gif)
@@ -19,10 +24,6 @@ This game is a virtual representation of the classic Tic-Tac-Toe game.
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 
 <!-- PROJECT LOGO -->
 <br />

@@ -1,5 +1,14 @@
 # ruby_tic_tac_toe
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
+This game is a virtual representation of the classic Tic-Tac-Toe game.
+
+![Tic tac toe game](https://lemmoscripts.com/wp/wp-content/uploads/2018/09/tic-tac-toe-capture-2.gif)
+
 <!--
 *** Thanks for checking out this README Template. If you have a suggestion that would
 *** make this better, please fork the repo and create a pull request or simply open
@@ -15,10 +24,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -36,22 +41,49 @@
 </p>
 
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [About The Project](#about-the-project)
-- [Installation](#installation)
-- [Built With](#built-with)
-- [Contributor](#contributor)
-- [Acknowledgements](#acknowledgements)
-- [📝 License](#license)
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Rules For Tic-Tac-Toe
 
-This is the third project on the Ruby section of the Microverse main technical curriculum.
-The main purpose of this project is to practice Object-Oriented Programming.
-<!-- ABOUT THE PROJECT -->
+1. The game is played on agrid that is 3 by 3 squares.
+2. It is a game of two players that use X and O to mark moves in empty squares.
+3. The first player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.
+4. The game is over when all 9 squares are full. If no player has 3 marks in a row, the game ends in a tie.
+5. Below is a virtual implementation where marks can be placed by selecting from numbers 1 to 9 when prompted.
+
+| (1) | (2) | (3) |
+-------------------
+| (4) | (5) | (6) |
+-------------------
+| (7) | (8) | (9) |
+-------------------
+
+6. A winning position would like the image below at the end. As soon as someone gets three of their marks in a row, the game ends.
+
+
+|  O  |  X  |  O  | 
+-------------------
+|  X  |  X  |  X  |  --- *Player 'X' wins with this row!*
+-------------------
+|  O  |  O  |  O  |
+-------------------
+
+For a detailed explanation, please have a look at this [guide](https://www.wikihow.com/Play-Tic-Tac-Toe).
+
+## Getting Started
+### Prerequisites
+    Ruby installed on local machine
+    Text editor (preferably: VSCode, Atom, Sublime)
+
+### Starting the game
+1. If you have installed `Ruby` on your machine:
+    Clone the project into your local machine using `git clone` command or download the zip file.
+    Go into the project directory using `cd directory name` command.
+    Open your terminal and type `bin/main.rb` command.
+    Enter players' names, select the letters which players play with.
+    On the displayed board choose the cells by numbers between 1 and 9 to mark your selected letter ('X' or 'O').
+2. If you have not installed `Ruby`, please, install `Ruby` and repeat step 1. 
+
 ## Installation
 Contributions, issues and feature requests are welcome! Start by:
 * Forking the project

@@ -70,7 +70,20 @@ This game is a virtual representation of the classic Tic-Tac-Toe game.
 
 For a detailed explanation, please have a look at this [guide](https://www.wikihow.com/Play-Tic-Tac-Toe).
 
-<!-- ABOUT THE PROJECT -->
+## Getting Started
+### Prerequisites
+    Ruby installed on local machine
+    Text editor (preferably: VSCode, Atom, Sublime)
+
+### Starting the game
+1. If you have installed `Ruby` on your machine:
+    Clone the project into your local machine using `git clone` command or download the zip file.
+    Go into the project directory using `cd directory name` command.
+    Open your terminal and type `bin/main.rb` command.
+    Enter players' names, select the letters which players play with.
+    On the displayed board choose the cells by numbers between 1 and 9 to mark your selected letter ('X' or 'O').
+2. If you have not installed `Ruby`, please, install `Ruby` and repeat step 1. 
+
 ## Installation
 Contributions, issues and feature requests are welcome! Start by:
 * Forking the project

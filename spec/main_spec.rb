@@ -2,37 +2,50 @@ require_relative '../lib/game.rb'
 require_relative '../lib/board.rb'
 
 describe Game do
-  subject(:game) { Game.new([1, 2, 3, 4, 5, 6, 7, 8, 9]) }
+
+  let(:arr){[' '] * 9} 
+  subject(:game) { Game.new(arr) }
 
   describe "#initialize" do
     it "should initialize the Game class" do
-      expect(game.class).to eq(Game)
+      expect(subject.class).to eq(Game)
+      expect(subject.board).to eq arr
     end
   end
 
   describe "#current_player" do
-    let(:player1_name) { "Marylene" }
-    let(:player2_name) { "Glory" }
+    let(:player_one_name) { "Marylene"}
+    let(:player_two_name) { "Glory"}
+    let(:player_one_symbol) {'X'}
+    let(:player_two_symbol) {'O'}
 
     context "when num is even" do
       let(:num) { 2 }
-      it "checks if number given is even" do
+      
+      it "checks if player one is set as the current player" do
+        subject.player1_name = player_one_name
+        subject.player1_select = player_one_symbol
+        subject.player2_name = player_two_name
+        subject.player2_select = player_two_symbol
+        subject.current_player(num)
         expect(num.even?).to eq(true)
-      end
-
-      it "should set player one name to be name of current player" do
-        expect(player1_name).to eq("Marylene")
+        expect(subject.name_current_player).to eq(player_one_name)
+        expect(subject.current_player_letter).to eq(player_one_symbol)
       end
     end
 
-    context "when num is not even" do
-      let(:num) { 1 }
-      it "checks if number given is not even" do
+    context "when num is odd" do
+      let(:num) { 3 }
+      
+      it "checks if player two is set as the current player" do
+        subject.player1_name = player_one_name
+        subject.player1_select = player_one_symbol
+        subject.player2_name = player_two_name
+        subject.player2_select = player_two_symbol
+        subject.current_player(num)
         expect(num.odd?).to eq(true)
-      end
-
-      it "should set player two name to be name of current player" do
-        expect(player2_name).to eq("Glory")
+        expect(subject.name_current_player).to eq(player_two_name)
+        expect(subject.current_player_letter).to eq(player_two_symbol)
       end
     end
   end
@@ -40,33 +53,42 @@ describe Game do
   describe "#valid_move?" do
     selection = rand(1..9)
     it "checks if the selected move is valid" do
-      expect(game.valid_move?(selection)).to eql(false)
+      expect(subject.valid_move?(selection)).to eql(true)
     end
     it "returns false when a string is entered" do
-      expect(game.valid_move?("")).to be false
+      expect(subject.valid_move?("")).to be false
     end
     it "checks if the value selected is a valid move" do
       selection = rand(1..9)
-      game.add_to_board(selection)
-      expect(game.valid_move?(selection)).to eql(false)
+      subject.add_to_board(selection)
+      expect(subject.valid_move?(selection)).to eql(false)
     end
   end
 
   describe "#add_to_board" do
     let(:alphabet) { nil }
-    arr = Array[1, 2, 3, 4, 5, 6, 7, 8, 9]
+    board = [' '] * 9
     selection = rand(1..9)
-    arr.delete_at(selection - 1)
+    board.delete_at(selection - 1)
     it "should add the choice of the player to the board" do
-      output = arr.insert(selection - 1, alphabet)
-      expect(game.add_to_board(selection)).to eq(output)
+      output = board.insert(selection - 1, alphabet)
+    subject.add_to_board(selection)
+      expect(subject.add_to_board(selection)).to eq(output)
     end
   end
 end
 
 describe Board do
   describe "#win?" do
-    context "when there is a win" do
+    context "when there is a win horizontal middle" do
+      let(:board) { [" ", " ", " ", "O", "O", "O", " ", " ", " "]}
+      let(:alphabet) { "O" }
+      it "should return true" do
+        expect(Board.win?(board, alphabet)).to eq true
+      end
+    end
+
+    context 'when there is a win horizontal first' do
       let(:board) { ["O", "O", "O", " ", " ", " ", " ", " ", " "]}
       let(:alphabet) { "O" }
       it "should return true" do
@@ -74,12 +96,62 @@ describe Board do
       end
     end
 
-    context "when there is no win" do
-      let(:board) { ["X", " ", " ", " ", " ", " ", "X", " ", " "]}
-      let(:alphabet) { "X" }
-      it "should return false" do
-        expect(Board.win?(board, alphabet)).to eq false
+    context 'when there is a win horizontal third' do
+      let(:board) { [" ", " ", " ", " ", " ", " ", "O", "O", "O"]}
+      let(:alphabet) { "O" }
+      it "should return true" do
+        expect(Board.win?(board, alphabet)).to eq true
       end
+    end
+    
+    context 'when there is a win first vertical' do
+      let(:board) { ["X", " ", " ", "X", " ", " ", "X", " ", " "]}
+      let(:alphabet) {"X"}
+      it "should return true" do
+        expect(Board.win?(board, alphabet)).to eq true
+      end
+    end
+    
+    context 'when there is a win middle vertical' do
+      let(:board) { [" ", "X", " ", " ", "X", " ", " ", "X", " "]}
+      let(:alphabet) { "X" }
+      it "should return true" do
+        expect(Board.win?(board, alphabet)).to eq true
+      end
+    end
+
+    context 'when there is a win third vertical' do
+      let(:board) { [" ", " ", "X", " ", " ", "X", " ", " ", "X"]}
+      let(:alphabet) { "X" }
+      it "should return true" do
+        expect(Board.win?(board, alphabet)).to eq true
+      end
+    end
+
+    context 'when there is a win major diagonal' do
+      let(:board) { ["X", " ", " ", " ", "X", " ", " ", " ", "X"]}
+      let(:alphabet) { "X" }
+      it "should return true" do
+        expect(Board.win?(board, alphabet)).to eq true
+      end
+    end
+  
+    context 'when there is a win minor diagonal' do
+      let(:board) { [" ", " ", "O", " ", "O", " ", "O", " ", " "]}
+      let(:alphabet) { "O" }
+      it "should return true" do
+        expect(Board.win?(board, alphabet)).to eq true
+      end
+    end
+
+   
+  end
+
+  describe "when there is no win" do
+    let(:board) { ["X", " ", " ", " ", " ", " ", "X", " ", " "]}
+    let(:alphabet) { "X" }
+    it "should return false" do
+      expect(Board.win?(board, alphabet)).to eq false
     end
   end
 

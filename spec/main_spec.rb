@@ -1,5 +1,5 @@
 require_relative '../lib/game.rb'
-require_relative '../lib/name_check.rb'
+require_relative '../lib/board.rb'
 
 describe Game do
   subject(:game) { Game.new([1, 2, 3, 4, 5, 6, 7, 8, 9]) }
@@ -54,12 +54,30 @@ describe Game do
 end
 
 describe Board do
-  describe '#draw?' do
-    it 'returns true if the board is full' do
+  describe "#win?" do
+    context "when there is a win" do
+      let(:board) { ["O", "O", "O", " ", " ", " ", " ", " ", " "]}
+      let(:alphabet) { "O" }
+      it "should return true" do
+        expect(Board.win?(board, alphabet)).to eq true
+      end
+    end
+
+    context "when there is no win" do
+      let(:board) { ["X", " ", " ", " ", " ", " ", "X", " ", " "]}
+      let(:alphabet) { "X" }
+      it "should return false" do
+        expect(Board.win?(board, alphabet)).to eq false
+      end
+    end
+  end
+
+  describe "#draw?" do
+    it "returns true if the board is full" do
       expect(Board.draw?(%w[X O X X O X O X O])).to be true
     end
 
-    it 'returns false if board has an empty cell' do
+    it "returns false if board has an empty cell" do
       expect(Board.draw?(['X', ' '])).to be false
     end
   end

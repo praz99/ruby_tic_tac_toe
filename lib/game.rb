@@ -8,6 +8,10 @@ class Game
     @board = arr
   end
 
+  def valid_alphabet?(alphabet)
+    return true if %w[X O].include?(alphabet)
+  end
+
   def current_player(num)
     if num.even?
       @name_current_player = @player1_name

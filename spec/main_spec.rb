@@ -52,3 +52,15 @@ describe Game do
     end
   end
 end
+
+describe Board do
+  describe '#draw?' do
+    it 'returns true if the board is full' do
+      expect(Board.draw?(%w[X O X X O X O X O])).to be true
+    end
+
+    it 'returns false if board has an empty cell' do
+      expect(Board.draw?(['X', ' '])).to be false
+    end
+  end
+end

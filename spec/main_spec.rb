@@ -36,4 +36,19 @@ describe Game do
       end
     end
   end
+
+  describe "#valid_move?" do
+    selection = rand(1..9)
+    it "checks if the selected move is valid" do
+      expect(game.valid_move?(selection)).to eql(false)
+    end
+    it "returns false when a string is entered" do
+      expect(game.valid_move?("")).to be false
+    end
+    it "checks if the value selected is a valid move" do
+      selection = rand(1..9)
+      game.add_to_board(selection)
+      expect(game.valid_move?(selection)).to eql(false)
+    end
+  end
 end

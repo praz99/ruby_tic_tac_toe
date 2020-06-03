@@ -51,6 +51,17 @@ describe Game do
       expect(game.valid_move?(selection)).to eql(false)
     end
   end
+
+  describe "#add_to_board" do
+    let(:alphabet) { nil }
+    arr = Array[1, 2, 3, 4, 5, 6, 7, 8, 9]
+    selection = rand(1..9)
+    arr.delete_at(selection - 1)
+    it "should add the choice of the player to the board" do
+      output = arr.insert(selection - 1, alphabet)
+      expect(game.add_to_board(selection)).to eq(output)
+    end
+  end
 end
 
 describe Board do

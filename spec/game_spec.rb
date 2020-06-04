@@ -82,6 +82,14 @@ describe Game do
       expect(subject.valid_move?(selection)).to eql(false)
     end
   end
+end
+
+describe Board do
+  subject(:game) { Game.new(board) }
+  let(:player_one_name) { 'Marylene' }
+  let(:player_two_name) { 'Glory' }
+  let(:player_one_symbol) { 'X' }
+  let(:player_two_symbol) { 'O' }
 
   describe '#win?' do
     context 'when there is a win horizontal middle' do

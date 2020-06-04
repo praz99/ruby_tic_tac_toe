@@ -5,9 +5,9 @@ describe Game do
   let(:board) { [' '] * 9 }
   subject(:game) { Game.new(board) }
   let(:player_one_name) { 'Marylene' }
-    let(:player_two_name) { 'Glory' }
-    let(:player_one_symbol) { 'X' }
-    let(:player_two_symbol) { 'O' }
+  let(:player_two_name) { 'Glory' }
+  let(:player_one_symbol) { 'X' }
+  let(:player_two_symbol) { 'O' }
 
   describe '#initialize' do
     context '' do
@@ -16,15 +16,14 @@ describe Game do
         expect(subject.board).to eq board
       end
     end
-  
+
     it "should initialize the Game class with a value of board=arr when passed an argument 'arr' " do
       expect(subject.class).to eq(Game)
       expect(subject.board).to eq board
     end
   end
 
-  describe '#valid_alphabet'do
-
+  describe '#valid_alphabet' do
     it "returns true when choice is 'X' " do
       expect(subject.valid_alphabet?('X')).to eq(true)
     end
@@ -105,7 +104,7 @@ describe Game do
         expect(subject.win?).to eq true
       end
     end
-  
+
     context 'when there is a win horizontal third' do
       subject(:game) { Game.new([' ', ' ', ' ', ' ', ' ', ' ', 'O', 'O', 'O']) }
       let(:num) { 3 }
@@ -115,9 +114,9 @@ describe Game do
         expect(subject.win?).to eq true
       end
     end
-  
+
     context 'when there is a win first vertical' do
-      subject(:game) { Game.new(['X', ' ', ' ', 'X', ' ', ' ', 'X', ' ', ' '] ) }
+      subject(:game) { Game.new(['X', ' ', ' ', 'X', ' ', ' ', 'X', ' ', ' ']) }
       let(:num) { 2 }
       it 'should return true' do
         subject.player1_select = player_one_symbol
@@ -125,7 +124,7 @@ describe Game do
         expect(subject.win?).to eq true
       end
     end
-  
+
     context 'when there is a win middle vertical' do
       subject(:game) { Game.new([' ', 'X', ' ', ' ', 'X', ' ', ' ', 'X', ' ']) }
       let(:num) { 2 }
@@ -145,7 +144,7 @@ describe Game do
         expect(subject.win?).to eq true
       end
     end
-  
+
     context 'when there is a win major diagonal' do
       subject(:game) { Game.new(['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']) }
       let(:num) { 2 }
@@ -155,7 +154,7 @@ describe Game do
         expect(subject.win?).to eq true
       end
     end
-  
+
     context 'when there is a win minor diagonal' do
       subject(:game) { Game.new([' ', ' ', 'O', ' ', 'O', ' ', 'O', ' ', ' ']) }
       let(:num) { 3 }
@@ -167,7 +166,7 @@ describe Game do
     end
 
     context 'when there is no win' do
-      subject(:game) { Game.new(['X', ' ', ' ', ' ', ' ', ' ', 'X', ' ', ' '] )}
+      subject(:game) { Game.new(['X', ' ', ' ', ' ', ' ', ' ', 'X', ' ', ' ']) }
       let(:num) { 2 }
       it 'should return false' do
         subject.player1_select = player_one_symbol
@@ -182,12 +181,11 @@ describe Game do
       expect(subject.no_win?).to be true
     end
 
-    context "when the board has an empty cell and there is no winner" do
+    context 'when the board has an empty cell and there is no winner' do
       subject(:game) { Game.new(['X', ' ']) }
       it 'returns false if board has an empty cell' do
         expect(subject.no_win?).to be false
       end
-    end  
+    end
   end
 end
-  

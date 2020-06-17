@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/game.rb'
-require_relative '../lib/name_check.rb'
 
 puts "\n.....Welcome to Tic-Tac_Toe!.....\n\n"
 
@@ -20,11 +19,10 @@ play = true
 
 while play
   game = Game.new([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
-  name_check = NameCheck.new
   puts "Please enter your name Player One:\n"
   player_one = gets.chomp.capitalize
 
-  until name_check.name_given?(player_one)
+  while player_one.empty?
     puts "Name cannot be empty.Please enter your name!\n\n"
     player_one = gets.chomp.capitalize
   end
@@ -34,7 +32,8 @@ while play
 
   until %w[X O].include?(select_one)
     puts "\nPlease select either 'X' or 'O'"
-    select_one = gets.chomp.upcase
+    alphabet = gets.chomp.upcase
+    select_one = select_letter if Game.valid_alphabet?(alphabet)
   end
 
   game.player1_name = player_one
@@ -45,12 +44,8 @@ while play
   puts "\nPlease enter your name Player Two:"
   player_two = gets.chomp.capitalize
 
-  until name_check.name_given?(player_two)
+  while player_two.empty?
     puts "Name cannot be empty.Please enter your name!\n\n"
-    player_two = gets.chomp.capitalize
-  end
-  while name_check.name_repeated?(player_one, player_two)
-    puts "This name has been repeated. Please enter a different name Player two.\n\n"
     player_two = gets.chomp.capitalize
   end
 
@@ -116,7 +111,7 @@ while play
   end
   while choice
     play = choice == 'y'
-    puts "\nThankyou for playing tic-tac-toe." if play == false
+    puts "\nThank you for playing tic-tac-toe." if play == false
     break
   end
 end

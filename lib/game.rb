@@ -4,8 +4,12 @@ class Game
   attr_writer :player1_name, :player2_name, :player1_select, :player2_select
   attr_reader :current_player_letter, :name_current_player, :board
 
-  def initialize(arr)
+  def initialize(arr = [' '] * 9)
     @board = arr
+  end
+
+  def valid_alphabet?(alphabet)
+    %w[X O].include?(alphabet)
   end
 
   def current_player(num)

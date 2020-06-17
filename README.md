@@ -5,7 +5,9 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
-This game is a virtual representation of the classic Tic-Tac-Toe game.
+> This game is a virtual representation of the classic Tic-Tac-Toe game.
+
+> All public class methods are tested with RSpec.
 
 ![Tic tac toe game](https://lemmoscripts.com/wp/wp-content/uploads/2018/09/tic-tac-toe-capture-2.gif)
 
@@ -45,7 +47,7 @@ This game is a virtual representation of the classic Tic-Tac-Toe game.
 <!-- ABOUT THE PROJECT -->
 ## Rules For Tic-Tac-Toe
 
-1. The game is played on agrid that is 3 by 3 squares.
+1. The game is played on a grid that is 3 by 3 squares.
 2. It is a game of two players that use X and O to mark moves in empty squares.
 3. The first player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.
 4. The game is over when all 9 squares are full. If no player has 3 marks in a row, the game ends in a tie.
@@ -83,6 +85,7 @@ For a detailed explanation, please have a look at this [guide](https://www.wikih
     Enter players' names, select the letters which players play with.
     On the displayed board choose the cells by numbers between 1 and 9 to mark your selected letter ('X' or 'O').
 2. If you have not installed `Ruby`, please, install `Ruby` and repeat step 1. 
+3. Run ```rspec``` in the terminal of your root directory to run the described tests or run ```rspec --format doc``` to see a more detailed description of the written tests.
 
 ## Installation
 Contributions, issues and feature requests are welcome! Start by:
@@ -97,6 +100,7 @@ Contributions, issues and feature requests are welcome! Start by:
 ### Built With
 This project was built using these technologies.
 * Ruby
+* RSpec
 * Visual Studio Code
 
 <!-- CONTACT -->
@@ -115,6 +119,10 @@ This project was built using these technologies.
 - E-mail: glodave99@gmail.com
 - Twitter: [@gloweeeyah](https://twitter.com/gloweeeyah)
 
+👤 **Marylene Sawyer**
+- Github: [@Bluette1](https://github.com/Bluette1)
+- Twitter: [@MaryleneSawyer](https://twitter.com/MaryleneSawyer)
+- Linkedin: [Marylene Sawyer](https://www.linkedin.com/in/marylene-sawyer-b4ba1295/)
 
 ## Show your support
 
